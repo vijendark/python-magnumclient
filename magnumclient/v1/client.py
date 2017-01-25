@@ -24,6 +24,7 @@ from magnumclient.v1 import certificates
 from magnumclient.v1 import cluster_templates
 from magnumclient.v1 import clusters
 from magnumclient.v1 import mservices
+from magnumclient.v1 import stats
 
 
 DEFAULT_SERVICE_TYPE = 'container-infra'
@@ -198,3 +199,4 @@ class Client(object):
         self.cluster_templates = \
             cluster_templates.ClusterTemplateManager(self.http_client)
         self.mservices = mservices.MServiceManager(self.http_client)
+        self.stats = stats.StatsManager(self.http_client)
