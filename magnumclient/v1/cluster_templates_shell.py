@@ -175,9 +175,10 @@ def _show_cluster_template(cluster_template):
            help=_('Indicates whether created Clusters should have a load '
                   'balancer for master nodes or not.'))
 @utils.arg('--floating-ip-enabled',
-           action='store_true', default=True,
            help=_('Indicates whether created Clusters should have a '
-                  'floating ip or not.'))
+                  'floating ip or not.'),
+           type=lambda v: strutils.bool_from_string(v, True),
+           default=True)
 def do_cluster_template_create(cs, args):
     """Create a cluster template."""
     args.command = 'cluster-template-create'

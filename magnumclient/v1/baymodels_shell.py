@@ -124,9 +124,10 @@ def _show_baymodel(baymodel):
            help=_('Indicates whether created bays should have a load balancer '
                   'for master nodes or not.'))
 @utils.arg('--floating-ip-enabled',
-           action='store_true', default=True,
-           help=_('Indicates whether created bays should have a floating ip'
-                  'or not.'))
+           help=_('Indicates whether created Clusters should have a '
+                  'floating ip or not.'),
+           type=lambda v: strutils.bool_from_string(v, True),
+           default=True)
 @utils.deprecated(DEPRECATION_MESSAGE)
 def do_baymodel_create(cs, args):
     """Create a baymodel.
