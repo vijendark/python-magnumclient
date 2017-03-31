@@ -28,6 +28,7 @@ class FakeClusterTemplate(ClusterTemplate):
         self.server_type = kwargs.get('server_type', 'vm')
         self.image_id = kwargs.get('image', 'x')
         self.tls_disabled = kwargs.get('tls_disabled', False)
+        self.verify_ca = kwargs.get('verify_ca', True)
         self.registry_enabled = kwargs.get('registry_enabled', False)
         self.coe = kwargs.get('coe', 'x')
         self.public = kwargs.get('public', False)
@@ -54,7 +55,7 @@ class ShellTest(shell_test_base.TestCommandLineArgument):
                            docker_storage_driver='devicemapper',
                            docker_volume_size=None, http_proxy=None,
                            https_proxy=None, no_proxy=None, labels={},
-                           tls_disabled=False, public=False,
+                           tls_disabled=False, verify_ca=True, public=False,
                            master_lb_enabled=False, server_type='vm',
                            floating_ip_enabled=True,
                            registry_enabled=False):
@@ -79,6 +80,7 @@ class ShellTest(shell_test_base.TestCommandLineArgument):
         expected_args['no_proxy'] = no_proxy
         expected_args['labels'] = labels
         expected_args['tls_disabled'] = tls_disabled
+        expected_args['verify_ca'] = verify_ca
         expected_args['public'] = public
         expected_args['master_lb_enabled'] = master_lb_enabled
         expected_args['server_type'] = server_type

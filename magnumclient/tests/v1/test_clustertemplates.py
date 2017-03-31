@@ -43,6 +43,7 @@ CLUSTERTEMPLATE1 = {
     'no_proxy': 'no_proxy',
     'labels': 'key1=val1,key11=val11',
     'tls_disabled': False,
+    'verify_ca': False,
     'public': False,
     'registry_enabled': False,
     'master_lb_enabled': True,
@@ -66,6 +67,7 @@ CLUSTERTEMPLATE2 = {
     'coe': 'kubernetes',
     'labels': 'key2=val2,key22=val22',
     'tls_disabled': True,
+    'verify_ca': True,
     'public': True,
     'registry_enabled': True}
 
@@ -301,6 +303,8 @@ class ClusterTemplateManagerTest(testtools.TestCase):
                          cluster_template.labels)
         self.assertEqual(CLUSTERTEMPLATE1['tls_disabled'],
                          cluster_template.tls_disabled)
+        self.assertEqual(CLUSTERTEMPLATE1['verify_ca'],
+                         cluster_template.verify_ca)
         self.assertEqual(CLUSTERTEMPLATE1['public'],
                          cluster_template.public)
         self.assertEqual(CLUSTERTEMPLATE1['registry_enabled'],
@@ -347,6 +351,8 @@ class ClusterTemplateManagerTest(testtools.TestCase):
                          cluster_template.labels)
         self.assertEqual(CLUSTERTEMPLATE1['tls_disabled'],
                          cluster_template.tls_disabled)
+        self.assertEqual(CLUSTERTEMPLATE1['verify_ca'],
+                         cluster_template.verify_ca)
         self.assertEqual(CLUSTERTEMPLATE1['public'],
                          cluster_template.public)
         self.assertEqual(CLUSTERTEMPLATE1['registry_enabled'],

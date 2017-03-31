@@ -15,7 +15,7 @@
 from magnumclient.common import cliutils as utils
 from magnumclient.common import utils as magnum_utils
 from magnumclient.i18n import _
-
+from oslo_utils import strutils
 
 DEPRECATION_MESSAGE = (
     'WARNING: Baymodel commands are deprecated and will be removed in a future'
@@ -103,6 +103,10 @@ def _show_baymodel(baymodel):
 @utils.arg('--tls-disabled',
            action='store_true', default=False,
            help=_('Disable TLS in the Bay.'))
+@utils.arg('--verify-ca',
+           help=_('Verify certificate authority.'),
+           type=lambda v: strutils.bool_from_string(v, True),
+           default=True)
 @utils.arg('--public',
            action='store_true', default=False,
            help=_('Make baymodel public.'))
@@ -149,6 +153,7 @@ def do_baymodel_create(cs, args):
     opts['no_proxy'] = args.no_proxy
     opts['labels'] = magnum_utils.handle_labels(args.labels)
     opts['tls_disabled'] = args.tls_disabled
+    opts['verify_ca'] = args.verify_ca
     opts['public'] = args.public
     opts['registry_enabled'] = args.registry_enabled
     opts['server_type'] = args.server_type
@@ -208,7 +213,8 @@ def do_baymodel_show(cs, args):
            metavar='<fields>',
            help=_('Comma-separated list of fields to display. '
                   'Available fields: uuid, name, coe, image_id, public, link, '
-                  'apiserver_port, server_type, tls_disabled, registry_enabled'
+                  'apiserver_port, server_type, tls_disabled, verify_ca, '
+                  'registry_enabled'
                   )
            )
 @utils.deprecated(DEPRECATION_MESSAGE)

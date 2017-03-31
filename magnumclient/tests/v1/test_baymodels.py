@@ -42,6 +42,7 @@ BAYMODEL1 = {'id': 123,
              'no_proxy': 'no_proxy',
              'labels': 'key1=val1,key11=val11',
              'tls_disabled': False,
+             'verify_ca': False,
              'public': False,
              'registry_enabled': False,
              'master_lb_enabled': True,
@@ -65,6 +66,7 @@ BAYMODEL2 = {'id': 124,
              'coe': 'kubernetes',
              'labels': 'key2=val2,key22=val22',
              'tls_disabled': True,
+             'verify_ca': True,
              'public': True,
              'registry_enabled': True}
 
@@ -275,6 +277,7 @@ class BayModelManagerTest(testtools.TestCase):
         self.assertEqual(BAYMODEL1['volume_driver'], baymodel.volume_driver)
         self.assertEqual(BAYMODEL1['labels'], baymodel.labels)
         self.assertEqual(BAYMODEL1['tls_disabled'], baymodel.tls_disabled)
+        self.assertEqual(BAYMODEL1['verify_ca'], baymodel.verify_ca)
         self.assertEqual(BAYMODEL1['public'], baymodel.public)
         self.assertEqual(BAYMODEL1['registry_enabled'],
                          baymodel.registry_enabled)
@@ -305,6 +308,7 @@ class BayModelManagerTest(testtools.TestCase):
         self.assertEqual(BAYMODEL1['volume_driver'], baymodel.volume_driver)
         self.assertEqual(BAYMODEL1['labels'], baymodel.labels)
         self.assertEqual(BAYMODEL1['tls_disabled'], baymodel.tls_disabled)
+        self.assertEqual(BAYMODEL1['verify_ca'], baymodel.verify_ca)
         self.assertEqual(BAYMODEL1['public'], baymodel.public)
         self.assertEqual(BAYMODEL1['registry_enabled'],
                          baymodel.registry_enabled)

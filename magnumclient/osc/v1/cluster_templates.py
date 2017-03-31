@@ -48,7 +48,7 @@ class ListTemplateCluster(command.Lister):
             help=_('Comma-separated list of fields to display. '
                    'Available fields: uuid, name, coe, image_id, public, '
                    'link, apiserver_port, server_type, tls_disabled, '
-                   'registry_enabled'
+                   'verify_ca, registry_enabled'
                    )
             )
         return parser
